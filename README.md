@@ -1,6 +1,6 @@
 # Portfolio-architecte-sophie-bluel
 
-Code du projet 6 d'intégrateur web.
+https://deltatreize.github.io/projet6/FrontEnd/index.html
 
 ## Information pour le lancer le code
 
