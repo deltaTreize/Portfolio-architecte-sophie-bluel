@@ -19,3 +19,5 @@ Lien pour voir la
 [documentation Swagger](http://localhost:5678/api-docs/)
 
 Pour lire la documentation, utiliser Chrome ou Firefox
+
+https://oc-tech-fr.slack.com/archives/C04E9TFBVG9/p1700753039960029
