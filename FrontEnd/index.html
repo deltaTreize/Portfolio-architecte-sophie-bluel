@@ -23,18 +23,92 @@
             class="modal modal1"
             aria-hidden="true"
             role="dialog"
-            aria-labelledby="modal-title"
+            aria-labelledby="modal1-title"
         >
-            <div class="modal-window">
-                <h2 id="modal1-title">Galerie photo</h2>
-                <span class="modal1-cross">
+            <div class="modal-window modal-window1" >
+                <h2 id="modal1-title " class="modal-title">Galerie photo</h2>
+                <button class="modal-cross modal-link" id="modal1-cross">
                     <i
                         class="fa-solid fa-xmark fa-xl"
                         style="color: #000000"
                     ></i>
-                </span>
+                </button>
                 <section id="modal1-projets" class="modal1-projets"></section>
-                <button type="button" id="modal1-btn">Ajouter une photo</button>
+                <button type="button" id="modal1-btn" class="modal-btn">
+                    Ajouter une photo
+                </button>
+            </div>
+            <div class="modal-window modal-window2" >
+                <h2 id="modal2-title " class="modal-title">Ajout photo</h2>
+                <button class="modal-arrow modal-link">
+                    <i
+                        class="fa-solid fa-arrow-left fa-xl"
+                        style="color: #000000"
+                    ></i>
+                </button>
+                <button class="modal-cross modal-link" id="modal2-cross">
+                    <i
+                        class="fa-solid fa-xmark fa-xl"
+                        style="color: #000000"
+                    ></i>
+                </button>
+                <div class="container">
+                    <form
+                        action="submit"
+                        class="formAddProjet"
+                        id="formAddProjet"
+                    >
+                        <div class="blockPreview">
+                            <img class="preview" />
+                            <div class="importImg formAddProjet">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="76"
+                                    width="76"
+                                    viewBox="0 0 512 512"
+                                    class="svgAddProjet"
+                                >
+                                    <path
+                                        d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                                    />
+                                </svg>
+                                <label for="picture" class="labelAddProjet">
+                                    <input
+                                        type="file"
+                                        id="picture"
+                                        name="image"
+                                        accept=".jpg, .png"
+                                        required
+                                    />
+                                    + Ajouter photo</label
+                                >
+                                <p class="pAddProjet">jpg, png : 4mo max</p>
+                            </div>
+                        </div>
+                        <h3 class="titleAddProjet">Titre</h3>
+                        <input
+                            type="text"
+                            class="inputAddProjet"
+                            name="title"
+                            required
+                        />
+                        <h3 class="titleAddProjet">Catégorie</h3>
+                        <select
+                            name="category"
+                            id="category"
+                            class="inputAddProjet inputAddProjet2"
+                            required
+                        >
+                            <option value="0"></option>
+                            <option value="1">Objets</option>
+                            <option value="2">Appartements</option>
+                            <option value="3">Hôtels & restaurants</option>
+                        </select>
+                    </form>
+                </div>
+                <button type="button" id="modal2-btn" class="modal-btn">
+                    valider
+                </button>
             </div>
         </aside>
         <div class="edition-mode-bar admin">
