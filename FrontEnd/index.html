@@ -12,8 +12,31 @@
         />
         <meta name="description" content="" />
         <link rel="stylesheet" href="./assets/style.css" />
+        <script
+            src="https://kit.fontawesome.com/8105007121.js"
+            crossorigin="anonymous"
+        ></script>
     </head>
     <body>
+        <aside
+            id="modal1"
+            class="modal modal1"
+            aria-hidden="true"
+            role="dialog"
+            aria-labelledby="modal-title"
+        >
+            <div class="modal-window">
+                <h2 id="modal1-title">Galerie photo</h2>
+                <span class="modal1-cross">
+                    <i
+                        class="fa-solid fa-xmark fa-xl"
+                        style="color: #000000"
+                    ></i>
+                </span>
+                <section id="modal1-projets" class="modal1-projets"></section>
+                <button type="button" id="modal1-btn">Ajouter une photo</button>
+            </div>
+        </aside>
         <div class="edition-mode-bar admin">
             <i class="fa-regular fa-pen-to-square"></i>
             Mode édition
@@ -66,13 +89,14 @@
                         décorateur(trice)
                     </p>
                 </article>
-            </section> 
-            
+            </section>
             <section id="portfolio">
                 <article class="portfolio-title">
                     <h2>Mes Projets</h2>
-                    <i class="fa-regular fa-pen-to-square admin"></i>
-										<span class="modifier-projet admin">modifier</span>
+                    <a class="modifier-projet admin" href="#modal1">
+                        <i class="fa-regular fa-pen-to-square admin"></i
+                        >modifier
+                    </a>
                 </article>
                 <div class="filterBar noAdmin">
                     <button type="button" onclick="createProjet()">Tous</button>
@@ -116,9 +140,5 @@
             </nav>
         </footer>
     </body>
-    <script
-        src="https://kit.fontawesome.com/8105007121.js"
-        crossorigin="anonymous"
-    ></script>
     <script src="./frontEndApp.js"></script>
 </html>
