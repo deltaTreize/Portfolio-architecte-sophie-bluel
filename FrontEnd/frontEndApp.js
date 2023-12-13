@@ -1,56 +1,33 @@
-const gallery = document.querySelector(".gallery");
-const editionModeBar = document.querySelector(".edition-mode-bar");
-const logout = document.querySelector(".logout");
-const login = document.querySelector(".login");
-const filterBar = document.querySelector(".filterBar");
-const modifierProjet = document.querySelector(".modifier-projet");
-const modal1 = document.querySelector(".modal1");
-const modalWindow = document.querySelector(".modal-window1");
-const modalWindow2 = document.querySelector(".modal-window2");
-const modalArrow = document.querySelector(".modal-arrow");
-const modalCross1 = document.getElementById("modal1-cross");
-const modalCross2 = document.getElementById("modal2-cross");
-const modal1Btn = document.getElementById("modal1-btn");
-const modal2Btn = document.getElementById("modal2-btn");
-const pictureAddProjet = document.getElementById("picture");
-const formAddProjet = document.getElementById("formAddProjet");
-const titleAddProjet = document.querySelector(".inputAddProjet");
-const preview = document.querySelector(".preview");
-const importImg = document.querySelector(".importImg");
-const category = document.getElementById("category");
-const token = localStorage.getItem("token");
-const admin = document.querySelectorAll(".admin");
-const adminArray = Array.from(admin);
-const noAdmin = document.querySelectorAll(".noAdmin");
-const noAdminArray = Array.from(noAdmin);
-const modalProjets = document.getElementById("modal1-projets");
-const modalFigure = modalProjets.childNodes;
-const modalFigureArray = [...modalFigure];
-let Modal0 = null;
-const focusPossible = "button, input";
-let focusable = [];
+const focusPossible = "button, input, a, textarea";
 let lastFocus = null;
 
-if (token) {
-    adminArray.forEach((element) => {
-        element.style.display = "flex";
-    });
-    noAdminArray.forEach((element) => {
-        element.style.display = "none";
-    });
-} else {
-    adminArray.forEach((element) => {
-        element.style.display = "none";
-    });
-    noAdminArray.forEach((element) => {
-        element.style.display = "flex";
-    });
+function connectedDisplay() {
+    if (localStorage.getItem("token")) {
+        const admin = document.querySelectorAll(".admin");
+        const adminArray = Array.from(admin);
+        const noAdmin = document.querySelectorAll(".noAdmin");
+        const noAdminArray = Array.from(noAdmin);
+
+        adminArray.forEach((element) => {
+            element.style.display = "flex";
+        });
+
+        noAdminArray.forEach((element) => {
+            element.style.display = "none";
+        });
+    } else {
+        adminArray.forEach((element) => {
+            element.style.display = "none";
+        });
+        noAdminArray.forEach((element) => {
+            element.style.display = "flex";
+        });
+    }
 }
-logout.addEventListener("click", () => {
-    localStorage.removeItem("token");
-});
+connectedDisplay();
 
 async function createProjet(arg) {
+    const gallery = document.querySelector(".gallery");
     gallery.replaceChildren();
     const response = await fetch("http://localhost:5678/api/works");
     const projets = await response.json();
@@ -89,15 +66,18 @@ createProjet();
 /********* fenetre modale *********/
 
 function changeFocusable() {
+    const modalWindow = document.querySelector(".modal-window1");
+    const modalWindow2 = document.querySelector(".modal-window2");
     if (modalWindow2.style.display === "block") {
-        focusable = [...modalWindow2.querySelectorAll(focusPossible)];
+        return (focusable = [...modalWindow2.querySelectorAll(focusPossible)]);
     } else {
-        focusable = [...modalWindow.querySelectorAll(focusPossible)];
+        return (focusable = [...modalWindow.querySelectorAll(focusPossible)]);
     }
 }
 
-const focusAction = (e) => {
+function focusAction(e) {
     e.preventDefault();
+    const modal1 = document.querySelector(".modal1");
     let index = focusable.findIndex(
         (f) => f === modal1.querySelector(":focus")
     );
@@ -113,58 +93,53 @@ const focusAction = (e) => {
         index = focusable.length - 1;
     }
     focusable[index].focus();
-};
+}
 
-const openModal = (e) => {
+function openModal(e) {
     e.preventDefault();
+    const modal1 = document.querySelector(".modal1");
+    const modalWindow = document.querySelector(".modal-window1");
+    const modalWindow2 = document.querySelector(".modal-window2");
     lastFocus = document.querySelector(":focus");
     changeFocusable();
     focusable[0].focus();
-    Modal0 = document.querySelector(e.target.getAttribute("href"));
-    Modal0.style.display = "flex";
-    Modal0.removeAttribute("aria-hidden");
-    Modal0.setAttribute("aria-modal", "true");
-    Modal0.addEventListener("click", closeModal);
+    modal1.style.display = "flex";
+    modal1.removeAttribute("aria-hidden");
+    modal1.setAttribute("aria-modal", "true");
+    modal1.addEventListener("click", closeModal);
     modalWindow.addEventListener("click", stopPropagation);
     modalWindow2.addEventListener("click", stopPropagation);
-};
+}
 
-const closeModal = (e) => {
-    if (Modal0 === null) {
+function closeModal(e) {
+    const modal1 = document.querySelector(".modal1");
+    const modalWindow = document.querySelector(".modal-window1");
+    const modalWindow2 = document.querySelector(".modal-window2");
+    if (modal1.style.display === "none") {
         return;
     }
     e.preventDefault();
-    Modal0.style.display = "none";
+    modal1.style.display = "none";
     modalWindow2.style.display = "none";
     modalWindow.style.display = "block";
-    Modal0.setAttribute("aria-hidden", "true");
-    Modal0.removeAttribute("aria-modal");
-    Modal0.removeEventListener("click", closeModal);
+    modal1.setAttribute("aria-hidden", "true");
+    modal1.removeAttribute("aria-modal");
+    modal1.removeEventListener("click", closeModal);
     modalWindow.removeEventListener("click", stopPropagation);
     modalWindow2.removeEventListener("click", stopPropagation);
-    Modal0 = null;
     if (lastFocus !== null) {
         lastFocus.focus();
     }
-};
+}
 
-window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" || e.key === "Esc") {
-        closeModal(e);
-    }
-    if (e.key === "Tab" && modal1.style.display === "flex") {
-        focusAction(e);
-    }
-});
-
-const stopPropagation = (e) => {
+function stopPropagation(e) {
     e.stopPropagation();
-};
+}
 
 async function deleteModalPicture(arg) {
     const fetchResult = await fetch(`http://localhost:5678/api/works/${arg}`, {
         method: "DELETE",
-        headers: { Authorization: "Bearer " + token },
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
     });
     const response = await fetchResult.json();
     console.log(response.status);
@@ -182,6 +157,7 @@ async function createModalPicture() {
     const projets = await response.json();
 
     for (let i = 0; i < projets.length; i++) {
+        const modalProjets = document.getElementById("modal1-projets");
         const figure = document.createElement("figure");
         const image = document.createElement("img");
         const trash = document.createElement("button");
@@ -200,77 +176,114 @@ async function createModalPicture() {
 }
 createModalPicture();
 
-
 function previewFile() {
+    const pictureAddProjet = document.getElementById("picture");
     const file = pictureAddProjet.files[0];
 
     if (file) {
         const reader = new FileReader();
-
         reader.onload = function (e) {
+            const preview = document.querySelector(".preview");
+            const importImg = document.querySelector(".importImg");
             const imageDataUrl = e.target.result;
             preview.src = imageDataUrl;
             if (preview.src) {
                 importImg.style.display = "none";
-                preview.style = "z-index: 0;";
             }
         };
-
         reader.readAsDataURL(file);
     }
 }
 
 function cleanForm() {
+    const preview = document.querySelector(".preview");
+    const errortext = document.querySelector(".error-text");
+    const importImg = document.querySelector(".importImg");
+
     preview.src = "";
-    preview.style = "z-index: -1;";
     importImg.style.display = "flex";
-    titleAddProjet.value = "";
-    category.value = "0";
+    document.querySelector(".inputAddProjet").value = "";
+    document.getElementById("category").value = "0";
+    errortext.style.display = "none";
 }
 
 async function createNewProjet() {
-    const formData = new FormData(formAddProjet);
-
+    const formData = new FormData(document.getElementById("formAddProjet"));
+    const errortext = document.querySelector(".error-text");
     fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
-            Authorization: "Bearer " + `${token}`,
+            Authorization: "Bearer " + `${localStorage.getItem("token")}`,
         },
         body: formData,
-    })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log("Success:", data);
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
-
-        cleanForm();
+    }).then((response) => {
+        if (response.status === 201) {
+            createModalPicture();
+            cleanForm();
+        }
+        if (response.status === 400) {
+            console.log(response.status);
+            errortext.style.display = "flex";
+            alert("stop");
+        }
+        if (response.status === 500) {
+            console.log(response.status);
+            errortext.style.display = "flex";
+        }
+    });
 }
 
-modifierProjet.addEventListener("click", openModal);
-modalCross1.addEventListener("click", closeModal);
-modalCross2.addEventListener("click", closeModal);
-modal1.addEventListener("click", closeModal);
-modal1Btn.addEventListener("click", () => {
-    modalWindow.style.display = "none";
-    modalWindow2.style.display = "block";
-    changeFocusable();
-});
-modalArrow.addEventListener("click", () => {
+function window1Visible() {
+    const modal1 = document.querySelector(".modal1");
+    const modalWindow = document.querySelector(".modal-window1");
+    const modalWindow2 = document.querySelector(".modal-window2");
+    const preview = document.querySelector(".preview");
+    const importImg = document.querySelector(".importImg");
+
+    modal1.style.display = "flex";
+    modal1.removeAttribute("aria-hidden");
+    modal1.setAttribute("aria-modal", "true");
     modalWindow.style.display = "block";
     modalWindow2.style.display = "none";
     preview.src = "";
-    preview.style = "z-index: -1;";
     importImg.style.display = "flex";
-    cleanForm();
     changeFocusable();
+}
+
+function window2Visible() {
+    const modal1 = document.querySelector(".modal1");
+    const modalWindow = document.querySelector(".modal-window1");
+    const modalWindow2 = document.querySelector(".modal-window2");
+    modal1.style.display = "flex";
+    modal1.removeAttribute("aria-hidden");
+    modal1.setAttribute("aria-modal", "true");
+    modalWindow.style.display = "none";
+    modalWindow2.style.display = "block";
+    changeFocusable();
+}
+
+document.querySelector(".modifier-projet").addEventListener("click", openModal);
+document.getElementById("modal1-cross").addEventListener("click", closeModal);
+document.getElementById("modal2-cross").addEventListener("click", closeModal);
+document.querySelector(".modal1").addEventListener("click", closeModal);
+document.getElementById("modal1-btn").addEventListener("click", window2Visible);
+document.querySelector(".modal-arrow").addEventListener("click", () => {
+    window1Visible();
+    cleanForm();
 });
-modal2Btn.addEventListener("click", createNewProjet);
-pictureAddProjet.addEventListener("change", previewFile);
+document
+    .getElementById("modal2-btn")
+    .addEventListener("click", createNewProjet);
+document.getElementById("picture").addEventListener("change", previewFile);
+window.addEventListener("keydown", (e) => {
+    const modal1 = document.querySelector(".modal1");
+    if (e.key === "Escape" || e.key === "Esc") {
+        closeModal(e);
+    }
+    if (e.key === "Tab" && modal1.style.display === "flex") {
+        focusAction(e);
+    }
+});
+document.querySelector(".logout").addEventListener("click", () => {
+    localStorage.removeItem("token");
+});

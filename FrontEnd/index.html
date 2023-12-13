@@ -21,11 +21,10 @@
         <aside
             id="modal1"
             class="modal modal1"
-            aria-hidden="true"
             role="dialog"
             aria-labelledby="modal1-title"
         >
-            <div class="modal-window modal-window1" >
+            <div class="modal-window modal-window1">
                 <h2 id="modal1-title " class="modal-title">Galerie photo</h2>
                 <button class="modal-cross modal-link" id="modal1-cross">
                     <i
@@ -38,7 +37,7 @@
                     Ajouter une photo
                 </button>
             </div>
-            <div class="modal-window modal-window2" >
+            <div class="modal-window modal-window2">
                 <h2 id="modal2-title " class="modal-title">Ajout photo</h2>
                 <button class="modal-arrow modal-link">
                     <i
@@ -104,6 +103,9 @@
                             <option value="2">Appartements</option>
                             <option value="3">Hôtels & restaurants</option>
                         </select>
+                        <p class="error-text">
+                            veuillez remplire tout les champs du formulaire
+                        </p>
                     </form>
                 </div>
                 <button type="button" id="modal2-btn" class="modal-btn">
@@ -167,10 +169,10 @@
             <section id="portfolio">
                 <article class="portfolio-title">
                     <h2>Mes Projets</h2>
-                    <a class="modifier-projet admin" href="#modal1">
+                    <button class="modifier-projet admin">
                         <i class="fa-regular fa-pen-to-square admin"></i
                         >modifier
-                    </a>
+                    </button>
                 </article>
                 <div class="filterBar noAdmin">
                     <button type="button" onclick="createProjet()">Tous</button>
@@ -189,7 +191,7 @@
             <section id="contact">
                 <h2>Contact</h2>
                 <p>Vous avez un projet ? Discutons-en !</p>
-                <form action="#" method="post">
+                <form action="" method="post" id="formContact">
                     <label for="name">Nom</label>
                     <input type="text" name="name" id="name" />
                     <label for="email">Email</label>

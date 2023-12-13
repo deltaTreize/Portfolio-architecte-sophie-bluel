@@ -131,6 +131,7 @@ table {
     border-spacing: 0;
 }
 /** end reset css**/
+/********************************************************************************/
 body {
     font-family: "Work Sans";
     font-size: 14px;
@@ -148,7 +149,16 @@ body {
     height: 100%;
     background: hsla(0, 0%, 0%, 0.3);
     box-sizing: border-box;
+    z-index: 1;
+    animation: modalOpen 0.3s linear;
 }
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+    }
+}
+
 .modal-window {
     width: 630px;
     height: 688px;
@@ -156,7 +166,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -50%);
 }
 .modal-window2 {
     display: none;
@@ -222,14 +232,15 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;
-    /* justify-content: space-between; */
 }
 .modal1-figure {
     width: 17%;
+    height: 102px;
     position: relative;
 }
 .modal1-image {
     width: 100%;
+    height: 100%;
 }
 .modal1-trash {
     position: absolute;
@@ -276,9 +287,7 @@ body {
     margin-bottom: 30px;
     border: none;
 }
-.preview{
-    z-index: -1;
-    width: 50%;
+.preview {
     height: 100%;
 }
 #picture {
@@ -314,14 +323,24 @@ body {
     margin-top: 10px;
     margin-bottom: 21px;
 }
-.inputAddProjet2 {
-    margin-bottom: 47px;
-}
 .titleAddProjet {
     width: 100%;
     font-family: "work sans";
     font-weight: 500;
     font-size: 14px;
+}
+.error-text {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    font-size: 17px;
+    font-family: "work sans";
+    font-weight: 500;
+    color: black;
+    background-color: red;
+    margin-bottom: 20px;
 }
 .edition-mode-bar {
     display: none;
@@ -333,6 +352,10 @@ body {
     color: #fff;
     gap: 11px;
 }
+#message {
+    resize: none;
+}
+/**********************************************************************************************/
 .fa-pen-to-square {
     width: 15px;
     height: 15px;
@@ -445,6 +468,11 @@ main {
 }
 .modifier-projet {
     cursor: pointer;
+    border: none;
+    background: none;
+    font-family: "work sans";
+    font-weight: 400;
+    font-size: 14px;
 }
 
 #portfolio .filterBar {
