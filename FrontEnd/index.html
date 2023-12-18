@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Sophie Bluel - Architecte d'intérieur</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-            rel="stylesheet"
-        />
-        <meta name="description" content="" />
-        <link rel="stylesheet" href="./assets/style.css" />
-        <script
-            src="https://kit.fontawesome.com/8105007121.js"
-            crossorigin="anonymous"
-        ></script>
-    </head>
-    <body>
-        <aside
-            id="modal1"
-            class="modal modal1"
-            role="dialog"
-            aria-labelledby="modal1-title"
-        >
-            <div class="modal-window modal-window1">
-                <h2 id="modal1-title " class="modal-title">Galerie photo</h2>
-                <button class="modal-cross modal-link" id="modal1-cross">
-                    <i
-                        class="fa-solid fa-xmark fa-xl"
-                        style="color: #000000"
-                    ></i>
-                </button>
-                <section id="modal1-projets" class="modal1-projets"></section>
-                <button type="button" id="modal1-btn" class="modal-btn">
-                    Ajouter une photo
-                </button>
-            </div>
-            <div class="modal-window modal-window2">
-                <h2 id="modal2-title " class="modal-title">Ajout photo</h2>
-                <button class="modal-arrow modal-link">
-                    <i
-                        class="fa-solid fa-arrow-left fa-xl"
-                        style="color: #000000"
-                    ></i>
-                </button>
-                <button class="modal-cross modal-link" id="modal2-cross">
-                    <i
-                        class="fa-solid fa-xmark fa-xl"
-                        style="color: #000000"
-                    ></i>
-                </button>
-                <div class="container">
-                    <form
-                        action="submit"
-                        class="formAddProjet"
-                        id="formAddProjet"
-                    >
-                        <div class="blockPreview">
-                            <img class="preview" />
-                            <div class="importImg formAddProjet">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="76"
-                                    width="76"
-                                    viewBox="0 0 512 512"
-                                    class="svgAddProjet"
-                                >
-                                    <path
-                                        d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
-                                    />
-                                </svg>
-                                <label for="picture" class="labelAddProjet">
-                                    <input
-                                        type="file"
-                                        id="picture"
-                                        name="image"
-                                        accept=".jpg, .png"
-                                        required
-                                    />
-                                    + Ajouter photo</label
-                                >
-                                <p class="pAddProjet">jpg, png : 4mo max</p>
-                            </div>
-                        </div>
-                        <h3 class="titleAddProjet">Titre</h3>
-                        <input
-                            type="text"
-                            class="inputAddProjet"
-                            name="title"
-                            required
-                        />
-                        <h3 class="titleAddProjet">Catégorie</h3>
-                        <select
-                            name="category"
-                            id="category"
-                            class="inputAddProjet inputAddProjet2"
-                            required
-                        >
-                            <option value="0"></option>
-                            <option value="1">Objets</option>
-                            <option value="2">Appartements</option>
-                            <option value="3">Hôtels & restaurants</option>
-                        </select>
-                        <p class="error-text">
-                            veuillez remplire tout les champs du formulaire
-                        </p>
-                    </form>
-                </div>
-                <button type="button" id="modal2-btn" class="modal-btn">
-                    valider
-                </button>
-            </div>
-        </aside>
-        <div class="edition-mode-bar admin">
-            <i class="fa-regular fa-pen-to-square"></i>
-            Mode édition
-        </div>
-        <header>
-            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-            <nav>
-                <ul>
-                    <li>projets</li>
-                    <li>contact</li>
-                    <li class="login noAdmin">
-                        <a href="../FrontEnd/login/login.html"></a>login
-                    </li>
-                    <li class="logout admin">
-                        <a href="../FrontEnd/index.html"></a>logout
-                    </li>
-                    <li>
-                        <img
-                            src="./assets/icons/instagram.png"
-                            alt="Instagram"
-                        />
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="introduction">
-                <figure>
-                    <img src="./assets/images/sophie-bluel.png" alt="" />
-                </figure>
-                <article>
-                    <h2>Designer d'espace</h2>
-                    <p>
-                        Je raconte votre histoire, je valorise vos idées. Je
-                        vous accompagne de la conception à la livraison finale
-                        du chantier.
-                    </p>
-                    <br />
-                    <p>
-                        Chaque projet sera étudié en commun, de façon à mettre
-                        en valeur les volumes, les matières et les couleurs dans
-                        le respect de l’esprit des lieux et le choix adapté des
-                        matériaux. Le suivi du chantier sera assuré dans le
-                        souci du détail, le respect du planning et du budget.
-                    </p>
-                    <br />
-                    <p>
-                        En cas de besoin, une équipe pluridisciplinaire
-                        peut-être constituée : architecte DPLG,
-                        décorateur(trice)
-                    </p>
-                </article>
-            </section>
-            <section id="portfolio">
-                <article class="portfolio-title">
-                    <h2>Mes Projets</h2>
-                    <button class="modifier-projet admin">
-                        <i class="fa-regular fa-pen-to-square admin"></i
-                        >modifier
-                    </button>
-                </article>
-                <div class="filterBar noAdmin">
-                    <button type="button" onclick="createProjet()">Tous</button>
-                    <button type="button" onclick="createProjet(1)">
-                        Objets
-                    </button>
-                    <button type="button" onclick="createProjet(2)">
-                        Appartements
-                    </button>
-                    <button type="button" onclick="createProjet(3)">
-                        Hôtels & restaurants
-                    </button>
-                </div>
-                <div class="gallery"></div>
-            </section>
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>Vous avez un projet ? Discutons-en !</p>
-                <form action="" method="post" id="formContact">
-                    <label for="name">Nom</label>
-                    <input type="text" name="name" id="name" />
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" />
-                    <label for="message">Message</label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        cols="30"
-                        rows="10"
-                    ></textarea>
-                    <input type="submit" value="Envoyer" />
-                </form>
-            </section>
-        </main>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Sophie Bluel - Architecte d'intérieur</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="description" content="" />
+		<link rel="stylesheet" href="./assets/style.css" />
+		<script
+			src="https://kit.fontawesome.com/8105007121.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<aside
+			id="modal1"
+			class="modal modal1"
+			role="dialog"
+			aria-labelledby="modal1-title"
+		>
+			<div class="modal-window modal-window1">
+				<h2 id="modal1-title " class="modal-title">Galerie photo</h2>
+				<button class="modal-cross modal-link" id="modal1-cross">
+					<i
+						class="fa-solid fa-xmark fa-xl"
+						style="color: #000000"
+					></i>
+				</button>
+				<section id="modal1-projets" class="modal1-projets"></section>
+				<button type="button" id="modal1-btn" class="modal-btn">
+					Ajouter une photo
+				</button>
+			</div>
+			<div class="modal-window modal-window2">
+				<h2 id="modal2-title " class="modal-title">Ajout photo</h2>
+				<button class="modal-arrow modal-link">
+					<i
+						class="fa-solid fa-arrow-left fa-xl"
+						style="color: #000000"
+					></i>
+				</button>
+				<button class="modal-cross modal-link" id="modal2-cross">
+					<i
+						class="fa-solid fa-xmark fa-xl"
+						style="color: #000000"
+					></i>
+				</button>
+				<div class="container">
+					<form
+						action="submit"
+						class="formAddProjet"
+						id="formAddProjet"
+					>
+						<div class="blockPreview">
+							<img class="preview" />
+							<div class="importImg formAddProjet">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									height="76"
+									width="76"
+									viewBox="0 0 512 512"
+									class="svgAddProjet"
+								>
+									<path
+										d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+									/>
+								</svg>
+								<label for="picture" class="labelAddProjet">
+									<input
+										type="file"
+										id="picture"
+										name="image"
+										accept=".jpg, .png"
+										required
+									/>
+									+ Ajouter photo</label
+								>
+								<p class="pAddProjet">jpg, png : 4mo max</p>
+							</div>
+						</div>
+						<h3 class="titleAddProjet">Titre</h3>
+						<input
+							type="text"
+							class="inputAddProjet"
+							name="title"
+							required
+						/>
+						<h3 class="titleAddProjet">Catégorie</h3>
+						<select
+							name="category"
+							id="category"
+							class="inputAddProjet inputAddProjet2"
+							required
+						>
+							<option value="0"></option>
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hôtels & restaurants</option>
+						</select>
+						<p class="error-text">
+							veuillez remplire tout les champs du formulaire
+						</p>
+					</form>
+				</div>
+				<button type="button" id="modal2-btn" class="modal-btn">
+					valider
+				</button>
+			</div>
+		</aside>
+		<div class="edition-mode-bar admin">
+			<i class="fa-regular fa-pen-to-square"></i>
+			Mode édition
+		</div>
+		<header>
+			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+			<nav>
+				<ul>
+					<li>projets</li>
+					<li>contact</li>
+					<li class="login noAdmin">
+						<a href="../FrontEnd/login/login.html"></a>login
+					</li>
+					<li class="logout admin">
+						<a href="../FrontEnd/index.html"></a>logout
+					</li>
+					<li>
+						<img
+							src="./assets/icons/instagram.png"
+							alt="Instagram"
+						/>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section id="introduction">
+				<figure>
+					<img src="./assets/images/sophie-bluel.png" alt="" />
+				</figure>
+				<article>
+					<h2>Designer d'espace</h2>
+					<p>
+						Je raconte votre histoire, je valorise vos idées. Je
+						vous accompagne de la conception à la livraison finale
+						du chantier.
+					</p>
+					<br />
+					<p>
+						Chaque projet sera étudié en commun, de façon à mettre
+						en valeur les volumes, les matières et les couleurs dans
+						le respect de l’esprit des lieux et le choix adapté des
+						matériaux. Le suivi du chantier sera assuré dans le
+						souci du détail, le respect du planning et du budget.
+					</p>
+					<br />
+					<p>
+						En cas de besoin, une équipe pluridisciplinaire
+						peut-être constituée : architecte DPLG,
+						décorateur(trice)
+					</p>
+				</article>
+			</section>
+			<section id="portfolio">
+				<article class="portfolio-title">
+					<h2>Mes Projets</h2>
+					<button class="modifier-projet admin">
+						<i class="fa-regular fa-pen-to-square admin"></i
+						>modifier
+					</button>
+				</article>
+				<div class="filterBar noAdmin">
+					<button type="button" onclick="createProjet()">Tous</button>
+					<button type="button" onclick="createProjet(1)">
+						Objets
+					</button>
+					<button type="button" onclick="createProjet(2)">
+						Appartements
+					</button>
+					<button type="button" onclick="createProjet(3)">
+						Hôtels & restaurants
+					</button>
+				</div>
+				<div class="gallery"></div>
+			</section>
+			<section id="contact">
+				<h2>Contact</h2>
+				<p>Vous avez un projet ? Discutons-en !</p>
+				<form action="" method="post" id="formContact">
+					<label for="name">Nom</label>
+					<input type="text" name="name" id="name" />
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" />
+					<label for="message">Message</label>
+					<textarea
+						name="message"
+						id="message"
+						cols="30"
+						rows="10"
+					></textarea>
+					<input type="submit" value="Envoyer" />
+				</form>
+			</section>
+		</main>
 
-        <footer>
-            <nav>
-                <ul>
-                    <li>Mentions Légales</li>
-                </ul>
-            </nav>
-        </footer>
-    </body>
-    <script src="./frontEndApp.js"></script>
+		<footer>
+			<nav>
+				<ul>
+					<li>Mentions Légales</li>
+				</ul>
+			</nav>
+		</footer>
+	</body>
+	<script src="./frontEndApp.js"></script>
 </html>
