@@ -1,5 +1,5 @@
-import { createModalPicture, openModal, closeModal} from "./scriptfiles/modal1.js";
-import { } from "./scriptfiles/modal2.js";
+import { createModalPicture, openModal, closeModal} from "./modal1.js";
+import { } from "./modal2.js";
 
 function connectedDisplay() {
 	const admin = document.querySelectorAll(".admin");
