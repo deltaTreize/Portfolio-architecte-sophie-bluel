@@ -242,11 +242,7 @@ body {
 	width: 100%;
 	height: 100%;
 }
-<<<<<<< HEAD
 .modal1-figure .modal1-trash {
-=======
-.modal1-trash {
->>>>>>> 055d73b6d041159017fbd775b12e346473ae4076
 	position: absolute;
 	top: 6px;
 	right: 5px;
@@ -257,10 +253,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-<<<<<<< HEAD
 	color: #ffffff;
-=======
->>>>>>> 055d73b6d041159017fbd775b12e346473ae4076
 }
 .container {
 	width: 100%;
@@ -475,10 +468,7 @@ main {
 	margin-right: 10px;
 }
 .modifier-projet {
-<<<<<<< HEAD
 	display: none;
-=======
->>>>>>> 055d73b6d041159017fbd775b12e346473ae4076
 	cursor: pointer;
 	border: none;
 	background: none;
