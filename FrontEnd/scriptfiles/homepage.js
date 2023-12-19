@@ -244,21 +244,48 @@ function cleanForm() {
 async function createNewProjet(e) {
 	console.log(e)
 	e.preventDefault(); // modale se ferme tjr
-	e.stopPropagation();
+ const ludo = document.getElementById("formAddProjet");
+ const photo = document.getElementById('picture');
+ const projectName = document.getElementById('titleProject');
+ const categorySelect = document.getElementById('category');
+ const photo2 = photo.files[0];
+ const projectName2 = projectName.value;
+ const categorySelect2 = categorySelect.value;
+ const formData2 = new FormData ();
+ formData2.append("image", photo2);
+  formData2.append("title", projectName2);
+  formData2.append("category",categorySelect2);
+ console.log(ludo);
+ fetch("http://localhost:5678/api/works", {
+	method: "POST",
+	headers: {
+		Authorization: "Bearer " + `${localStorage.getItem("token")}`,
+	},
+	body: formData2,
+})
+	.then((response) => {
+		if (response.ok) {
+			return response.json();
+		} else {
+			throw new Error("Erreur lors de l'ajout de la photo.");
+      }
+    })
+ return;
 	const formData = new FormData(document.getElementById("formAddProjet"));
 	const errortext = document.querySelector(".error-text");
-	return fetch("http://localhost:5678/api/works", {
+	 fetch("http://localhost:5678/api/works", {
 		method: "POST",
 		headers: {
 			Authorization: "Bearer " + `${localStorage.getItem("token")}`,
 		},
 		body: formData,
 	}).then((response) => {
-		return;
+	
 		if (response.status === 201) {
+			console.log(response.json())
 			//e.preventDefault(); // modale se ferme tjr
-			createModalPicture();
-			cleanForm();
+			// createModalPicture();
+			// cleanForm();
 		}
 		if (response.status === 400) {
 			console.log(response.status);
