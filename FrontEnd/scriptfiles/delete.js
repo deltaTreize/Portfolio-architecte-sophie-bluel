@@ -9,7 +9,7 @@ export function deleteModalPicture(event) {
 	}).then((response) => {
 		if (response.ok) {
 			document.querySelector(".modal1").style.display = "flex";
-			fetchWork()
+			fetchWork();
 		} else {
 			alert("error");
 		}

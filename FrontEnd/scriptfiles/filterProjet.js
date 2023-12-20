@@ -1,6 +1,5 @@
 import { projects, createProjetHome } from "./get.js";
 
-
 const filtrer0 = document.querySelector(".filter0");
 filtrer0.addEventListener("click", function () {
 	createProjetHome();
@@ -29,4 +28,3 @@ filtrer3.addEventListener("click", function () {
 	});
 	createProjetHome(projetsFiltres);
 });
-
