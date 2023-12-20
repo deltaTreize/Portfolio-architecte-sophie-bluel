@@ -1,3 +1,6 @@
+import { fetchWork } from "./get.js";
+import { cleanForm } from "./homepage.js";
+
 // export async function createModalPicture() {
 // 	const response = await fetch("http://localhost:5678/api/works");
 // 	const projets = await response.json();
@@ -56,8 +59,8 @@ export function createNewProjet(event) {
 	.then((response) =>{
 	if (response.ok) {
     document.querySelector(".modal1").style.display = "flex";
-    alert('yes');
-    event.preventdefault();
+    fetchWork();
+    cleanForm();
 	} else {
     alert("erreur")
 		// throw new Error("Erreur lors de l'ajout de la photo.");

@@ -1,4 +1,4 @@
-import { createProjet, fetchWork } from "./get.js";
+import { createProjetHome, fetchWork } from "./get.js";
 import {  createNewProjet } from "./post.js";
 
 // const focusPossible = "button, input, a, textarea";
@@ -87,7 +87,7 @@ function previewFile() {
 	}
 }
 
-function cleanForm() {
+export function cleanForm() {
 	const preview = document.querySelector(".preview");
 	const errortext = document.querySelector(".error-text");
 	const importImg = document.querySelector(".importImg");
@@ -136,7 +136,7 @@ function window1Visible() {
 function launch() {
 	connectedDisplay();
 	fetchWork();
-	// createProjet();
+	// createProjetHome();
 	// createModalPicture();
 	document
 		.querySelector(".modifier-projet")

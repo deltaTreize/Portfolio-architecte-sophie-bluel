@@ -6,33 +6,35 @@ export async function fetchWork() {
   try{
 	const response = await fetch("http://localhost:5678/api/works");
 	projects = await response.json();
-	createProjet();
+	createProjetHome();
   }catch{
     console.error("Error while fetching projects:", error);
     alert("Erreur lors du chargement de la gallerie.");
   }
 }
 
-export async function createProjet(projets = projects) {
-	const gallery = document.querySelector(".gallery");
-	gallery.replaceChildren();
+export async function createProjetHome(projets = projects) {
+	const homeGallery = document.querySelector(".gallery");
+	homeGallery.replaceChildren();
+	const modalGallery = document.querySelector(".modal1-projets");
+	modalGallery.replaceChildren();
 
 	for (let i = 0; i < projets.length; i++) {
 		const figcaption = document.createElement("figcaption");
-    const modalProjets = document.getElementById("modal1-projets");
 		const figure = document.createElement("figure");
 		const image = document.createElement("img");
 		const figureModal = document.createElement("figure");
 		const imageModal = document.createElement("img");
 		const trash = document.createElement("button");
-		gallery.appendChild(figure);
+		homeGallery.appendChild(figure);
 		figure.appendChild(image);
 		figure.appendChild(figcaption);
 		figure.classList.add("figure");
 		image.src = projets[i].imageUrl;
 		image.alt = projets[i].title;
 		figcaption.innerText = projets[i].title;
-		modalProjets.appendChild(figureModal);
+		/********modal************/
+		modalGallery.appendChild(figureModal);
 		figureModal.appendChild(trash);
 		figureModal.appendChild(imageModal);
 		figureModal.classList.add("modal1-figure");
