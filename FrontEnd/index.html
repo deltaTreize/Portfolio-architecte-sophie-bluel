@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Sophie Bluel - Architecte d'intérieur</title>
+		<title>moi Sophie Bluel - Architecte d'intérieur</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,19 +17,21 @@
 			crossorigin="anonymous"
 		></script>
 	<script type="module" src="./scriptfiles/homepage.js" defer></script>
+	<script type="module" src="./scriptfiles/delete.js" defer></script>
+	<script type="module" src="./scriptfiles/get.js" defer></script>
+	<script type="module" src="./scriptfiles/modalAction.js" defer></script>
+	<script type="module" src="./scriptfiles/post.js" defer></script>
+	<script type="module" src="./scriptfiles/filterProjet.js" defer></script>
 
 	</head>
 	<body>
-		<aside
+		<div
 			id="modal1"
 			class="modal modal1"
-			role="dialog"
-			aria-labelledby="modal1-title"
 		>
 			<div class="modal-window modal-window1">
 				<h2 id="modal1-title " class="modal-title">Galerie photo</h2>
 				<button class="modal-cross modal-link" id="modal1-cross" >
-				<button class="modal-cross modal-link" id="modal1-cross">
 					<i
 						class="fa-solid fa-xmark fa-xl"
 						style="color: #000000"
@@ -116,7 +118,7 @@
 					valider
 				</button>
 			</div>
-		</aside>
+		</div>
 		<div class="edition-mode-bar admin">
 			<i class="fa-regular fa-pen-to-square"></i>
 			Mode édition
@@ -179,14 +181,14 @@
 					</button>
 				</article>
 				<div class="filterBar noAdmin">
-					<button type="button" onclick="createProjet()">Tous</button>
-					<button type="button" onclick="createProjet(1)">
+					<button type="button" class="filter0">Tous</button>
+					<button type="button" class="filter1">
 						Objets
 					</button>
-					<button type="button" onclick="createProjet(2)">
+					<button type="button" class="filter2">
 						Appartements
 					</button>
-					<button type="button" onclick="createProjet(3)">
+					<button type="button" class="filter3">
 						Hôtels & restaurants
 					</button>
 				</div>
