@@ -7,11 +7,15 @@ export function deleteModalPicture(event) {
 			Authorization: "Bearer " + localStorage.getItem("token"),
 		},
 	}).then((response) => {
-		if (response.ok) {
-			document.querySelector(".modal1").style.display = "flex";
-			fetchWork();
+		if (localStorage.getItem("token")) {
+			if (response.ok) {
+				document.querySelector(".modal1").style.display = "flex";
+				fetchWork();
+			} else {
+				alert("error");
+			}
 		} else {
-			alert("error");
+			window.location.replace("./login/login.html");
 		}
 	});
 }

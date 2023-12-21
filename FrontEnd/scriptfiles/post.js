@@ -17,12 +17,16 @@ export function createNewProjet() {
 		},
 		body: formNew,
 	}).then((response) => {
-		if (response.ok) {
-			document.querySelector(".modal1").style.display = "flex";
-			fetchWork();
-			cleanForm();
+		if (localStorage.getItem("token")) {
+			if (response.ok) {
+				document.querySelector(".modal1").style.display = "flex";
+				fetchWork();
+				cleanForm();
+			} else {
+				document.querySelector(".error-text").style.display = "flex";
+			}
 		} else {
-			alert("erreur");
+			window.location.replace("./login/login.html");
 		}
 	});
 }

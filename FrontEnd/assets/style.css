@@ -232,6 +232,7 @@ body {
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 15px;
+	overflow-y: scroll;
 }
 .modal1-figure {
 	width: 17%;

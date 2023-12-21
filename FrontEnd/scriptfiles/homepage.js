@@ -1,6 +1,6 @@
 import { fetchWork } from "./get.js";
 import { createNewProjet } from "./post.js";
-import { windowEvent } from "./modalAction.js";
+import { windowEvent,changeFocusableWindow1,changeFocusableWindow2,openModal,closeModal,} from "./modalAction.js";
 
 function connectedDisplay() {
 	const admin = document.querySelectorAll(".admin");
@@ -65,6 +65,7 @@ function window2Visible() {
 	modal1.setAttribute("aria-modal", "true");
 	modalWindow.style.display = "none";
 	modalWindow2.style.display = "block";
+	changeFocusableWindow2();
 }
 
 function modalArrow() {
@@ -72,7 +73,7 @@ function modalArrow() {
 	cleanForm();
 }
 
-function window1Visible() {
+export function window1Visible() {
 	const modal1 = document.querySelector(".modal1");
 	const modalWindow = document.querySelector(".modal-window1");
 	const modalWindow2 = document.querySelector(".modal-window2");
@@ -86,28 +87,26 @@ function window1Visible() {
 	modalWindow2.style.display = "none";
 	preview.src = "";
 	importImg.style.display = "flex";
+	changeFocusableWindow1();
 }
 
 function launch() {
 	connectedDisplay();
 	fetchWork();
 	document.querySelector(".modifier-projet").addEventListener("click", () => {
-		document.querySelector(".modal1").style.display = "flex";
+		openModal();
 	});
 	window.addEventListener("click", (event) => {
 		const modal1 = document.querySelector(".modal1");
 		if (event.target === modal1) {
-			window1Visible();
-			document.querySelector(".modal1").style.display = "none";
+			closeModal();
 		}
 	});
 	document.getElementById("modal1-cross").addEventListener("click", () => {
-		window1Visible();
-		document.querySelector(".modal1").style.display = "none";
+		closeModal();
 	});
 	document.getElementById("modal2-cross").addEventListener("click", () => {
-		window1Visible();
-		document.querySelector(".modal1").style.display = "none";
+		closeModal();
 	});
 	document.getElementById("modal1-btn").addEventListener("click", () => {
 		window2Visible();
