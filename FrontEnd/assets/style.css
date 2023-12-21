@@ -225,7 +225,7 @@ body {
 }
 #modal1-projets {
 	margin: auto;
-	width: 420px;
+	width: 460px;
 	height: 433px;
 	border-bottom: 1px solid #b3b3b3;
 	display: flex;
@@ -233,6 +233,7 @@ body {
 	flex-wrap: wrap;
 	gap: 15px;
 	overflow-y: scroll;
+	scrollbar-width: none;
 }
 .modal1-figure {
 	width: 17%;
@@ -289,7 +290,7 @@ body {
 	margin-bottom: 30px;
 	border: none;
 }
-.preview {
+#preview {
 	height: 100%;
 }
 #picture {

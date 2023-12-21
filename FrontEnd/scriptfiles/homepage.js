@@ -32,9 +32,12 @@ function previewFile() {
 	if (file) {
 		const reader = new FileReader();
 		reader.onload = function (e) {
-			const preview = document.querySelector(".preview");
+			const blockPreview = document.querySelector(".blockPreview");
 			const importImg = document.querySelector(".importImg");
 			const imageDataUrl = e.target.result;
+			const preview = document.createElement("img");
+			preview.id = "preview";
+			blockPreview.appendChild(preview);
 			preview.src = imageDataUrl;
 			if (preview.src) {
 				importImg.style.display = "none";
@@ -45,13 +48,18 @@ function previewFile() {
 }
 
 export function cleanForm() {
-	const preview = document.querySelector(".preview");
+	const preview = document.getElementById("preview");
+	const blockPreview = document.querySelector(".blockPreview");
 	const errortext = document.querySelector(".error-text");
 	const importImg = document.querySelector(".importImg");
+	const picture = document.getElementById("picture");
 
 	document.querySelector(".inputAddProjet").value = "";
 	document.getElementById("category").value = "0";
-	preview.src = "";
+	if (preview) {
+		preview.remove();
+	}
+	picture.value = "";
 	importImg.style.display = "flex";
 	errortext.style.display = "none";
 }
@@ -70,24 +78,20 @@ function window2Visible() {
 
 function modalArrow() {
 	window1Visible();
-	cleanForm();
 }
 
 export function window1Visible() {
 	const modal1 = document.querySelector(".modal1");
 	const modalWindow = document.querySelector(".modal-window1");
 	const modalWindow2 = document.querySelector(".modal-window2");
-	const preview = document.querySelector(".preview");
-	const importImg = document.querySelector(".importImg");
 
 	modal1.style.display = "flex";
 	modal1.removeAttribute("aria-hidden");
 	modal1.setAttribute("aria-modal", "true");
 	modalWindow.style.display = "block";
 	modalWindow2.style.display = "none";
-	preview.src = "";
-	importImg.style.display = "flex";
 	changeFocusableWindow1();
+	cleanForm();
 }
 
 function launch() {
