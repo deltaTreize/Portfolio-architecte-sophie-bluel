@@ -1,6 +1,12 @@
 import { fetchWork } from "./get.js";
 import { createNewProjet } from "./post.js";
-import { windowEvent,changeFocusableWindow1,changeFocusableWindow2,openModal,closeModal,} from "./modalAction.js";
+import {
+	windowEvent,
+	changeFocusableWindow1,
+	changeFocusableWindow2,
+	openModal,
+	closeModal,
+} from "./modalAction.js";
 
 function connectedDisplay() {
 	const admin = document.querySelectorAll(".admin");
@@ -76,10 +82,6 @@ function window2Visible() {
 	changeFocusableWindow2();
 }
 
-function modalArrow() {
-	window1Visible();
-}
-
 export function window1Visible() {
 	const modal1 = document.querySelector(".modal1");
 	const modalWindow = document.querySelector(".modal-window1");
@@ -92,6 +94,18 @@ export function window1Visible() {
 	modalWindow2.style.display = "none";
 	changeFocusableWindow1();
 	cleanForm();
+}
+
+function modalArrow() {
+	window1Visible();
+}
+
+function displayArrowScroll() {
+	if (window.scrollY > 245) {
+		document.getElementById("goTop").style.display = "flex";
+	} else {
+		document.getElementById("goTop").style.display = "none";
+	}
 }
 
 function launch() {
@@ -126,5 +140,6 @@ function launch() {
 		localStorage.removeItem("token");
 	});
 	window.addEventListener("keydown", windowEvent);
+	window.addEventListener("scroll", displayArrowScroll);
 }
 launch();
