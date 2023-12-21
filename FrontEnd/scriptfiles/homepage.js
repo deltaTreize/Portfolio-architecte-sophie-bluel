@@ -55,7 +55,7 @@ export function cleanForm() {
 	const picture = document.getElementById("picture");
 
 	document.querySelector(".inputAddProjet").value = "";
-	document.getElementById("category").value = "0";
+	document.getElementById("category").value = "";
 	if (preview) {
 		preview.remove();
 	}

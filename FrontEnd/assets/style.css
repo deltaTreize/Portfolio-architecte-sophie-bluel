@@ -371,15 +371,31 @@ header {
 	justify-content: space-between;
 	margin: 50px 0;
 }
-nav ul li {
-	position: relative;
-}
-nav ul li a {
+nav {
 	display: flex;
-	position: absolute;
-	width: 100%;
-	height: 100%;
+	align-items: center;
+	list-style-type: none;
 }
+
+nav a {
+	cursor: pointer;
+	display: flex;
+	margin-left: 44px;
+	padding: 0 10px;
+	font-size: 16px;
+	font-weight: 400;
+	font-family: "work sans";
+	text-decoration: none;
+	color: black;
+}
+.logout {
+	display: none;
+}
+
+a:hover {
+	color: #b1663c;
+}
+
 section {
 	margin: 50px 0;
 }
@@ -404,23 +420,6 @@ h2 {
 	font-weight: 700;
 	font-size: 30px;
 	color: #1d6154;
-}
-nav ul {
-	display: flex;
-	align-items: center;
-	list-style-type: none;
-}
-nav li {
-	margin-left: 44px;
-	padding: 0 10px;
-	font-size: 1.2em;
-}
-.logout {
-	display: none;
-}
-
-li:hover {
-	color: #b1663c;
 }
 main {
 	max-width: 950px;
