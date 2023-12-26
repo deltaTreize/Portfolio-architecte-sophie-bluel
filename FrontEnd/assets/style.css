@@ -256,6 +256,7 @@ body {
 	align-items: center;
 	cursor: pointer;
 	color: #ffffff;
+	border: black;
 }
 .container {
 	width: 100%;
@@ -308,6 +309,7 @@ body {
 	font-family: "work sans";
 	font-weight: 500;
 	font-size: 14px;
+	cursor: pointer;
 }
 .svgAddProjet {
 	fill: #b9c5cc;
